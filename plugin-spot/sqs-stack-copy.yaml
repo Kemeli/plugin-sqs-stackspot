@@ -1,0 +1,22 @@
+Resources:
+  MyQueue:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      QueueName: MinhaFila2
+      MaximumMessageSize: 10000
+  S3:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: "wallas-bucket"
+
+
+#awslocal cloudformation create-stack --stack-name wallas --template-body file://sqs-stack-copy.yaml
+#awslocal cloudformation update-stack --stack-name wallas --template-body file://sqs-stack-copy.yaml
+#awslocal cloudformation delete-stack --stack-name wallas
+
+#awslocal sqs send-message --queue-url http://localhost:4566/000000000000/MinhaFila2 --message-body "Hello Worldddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+#awslocal sqs receive-message --queue-url http://localhost:4566/000000000000/MinhaFila2
+
+#awslocal sqs get-queue-url --queue-name MinhaFila2
+# awslocal sqs list-queues --queue-name-prefix MinhaFila2
+#awslocal sqs set-queue-attributes --queue-url "http://localhost:4566/000000000000/MinhaFila2" --attributes "{\"MessageRetentionPeriod\":\"60\"}"

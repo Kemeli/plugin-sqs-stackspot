@@ -1,0 +1,41 @@
+Resources:
+  MyQueue:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      QueueName: MinhaFila
+      MessageRetentionPeriod: 60
+      DelaySeconds: 10
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt MyDeadLetterQueue.Arn
+        maxReceiveCount: 10
+
+  MyDeadLetterQueue:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      QueueName: MinhaFila-DLQ
+      MessageRetentionPeriod: 120
+      VisibilityTimeout: 300
+      DelaySeconds: 0
+      MaximumMessageSize: 262144
+      ReceiveMessageWaitTimeSeconds: 0
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt MyDeadLetterQueue.Arn
+        maxReceiveCount: 5
+      KmsMasterKeyId: alias/aws/sqs
+      KmsDataKeyReusePeriodSeconds: 300
+
+#awslocal cloudformation create-stack --stack-name wagratom --template-body file://sqs-stack.yaml
+#awslocal cloudformation update-stack --stack-name wagratom --template-body file://sqs-stack.yaml
+#awslocal cloudformation delete-stack --stack-name wagratom
+
+#awslocal sqs get-queue-attributes --endpoint-url http://localhost:4566 --queue-url http://localhost:4566/000000000000/MinhaFila --attribute-names All
+
+#awslocal sqs send-message --queue-url http://localhost:4566/000000000000/MinhaFila --message-body "Hello World"
+#awslocal sqs receive-message --queue-url http://localhost:4566/000000000000/MinhaFila
+
+#awslocal sqs get-queue-url --queue-name MinhaFila
+#awslocal sqs list-queues --queue-name-prefix MinhaFila
+#awslocal sqs delete-queue --queue-url "http://localhost:4566/000000000000/MinhaFila"
+
+# awslocal sqs list-queues --queue-name-prefix MinhaFila
+#awslocal sqs set-queue-attributes --queue-url "http://localhost:4566/000000000000/MinhaFila" --attributes "{\"MessageRetentionPeriod\":\"60\"}"
