@@ -1,0 +1,7 @@
+cria uma fila usando yaml/file # ->completo
+configurar tamanho da mensagem # -> completo
+configurar delay de envio para fila # -> completo
+
+configurar fila com timeout # -> Falha, não é possível configurar o timeout da fila
+
+remove mensagens duplicadas # -> a fazer

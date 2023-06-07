@@ -1,20 +1,19 @@
-#!/bin/bash
+# def send_duplicate_message():
 
-queue_name="MinhaFila"
+# 	message_body = "Hello World"
+# 	sqs_client = boto3.client('sqs', endpoint_url=ENDPOINT_URL_SEND)
 
-# Executa o comando awslocal sqs get-queue-url e captura a saída e o código de retorno
-output=$(awslocal sqs get-queue-url --queue-name "$queue_name" 2>&1)
-return_code=$?
+# 	# Gera um ID único para o atributo MessageDeduplicationId
+# 	deduplication_id = str(uuid.uuid4())
 
-# Verifica o código de retorno do comando
-if [ $return_code -ne 0 ]; then
-  # Verifica se a mensagem de erro indica que a fila não existe
-  if [[ $output == *"NonExistentQueue"* ]]; then
-    echo "A fila não existe."
-  else
-    echo "Ocorreu um erro: $output"
-  fi
-else
-  queue_url=$(echo "$output" | jq -r '.QueueUrl')
-  echo "A fila existe. URL da fila: $queue_url"
-fi
+# 	# Envia a primeira mensagem para a fila
+# 	response = sqs_client.send_message(
+# 		QueueUrl=f'{QUEUE_URL}/{QUEUE_NAME}',
+# 		MessageBody=message_body,
+# 		MessageDeduplicationId=deduplication_id
+# 	)
+# 	response = sqs_client.send_message(
+# 		QueueUrl=f'{QUEUE_URL}/{QUEUE_NAME}',
+# 		MessageBody=message_body,
+# 		MessageDeduplicationId=deduplication_id
+# 	)

@@ -1,0 +1,4 @@
+message2 = {
+    'Id': 'MESMO_ID',
+    'MessageBody': 'Corpo da mensagem 2'
+}
