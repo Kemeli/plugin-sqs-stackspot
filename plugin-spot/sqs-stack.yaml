@@ -3,10 +3,14 @@ Resources:
     Type: "AWS::SQS::Queue"
     Properties:
       QueueName: MinhaFila.fifo
-      DuplicateMessageDetection: true
+      DelaySeconds: 20
+      MessageRetentionPeriod: 61
       MaximumMessageSize: 10000
-      ContentBasedDeduplication: true
+      VisibilityTimeout: 300
       FifoQueue: true
+      ReceiveMessageWaitTimeSeconds: 0
+      DuplicateMessageDetection: true
+      ContentBasedDeduplication: true
 
 
 # Resources:
