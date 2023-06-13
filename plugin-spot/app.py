@@ -67,22 +67,3 @@ def delete_message(receipt_handle):
 		ReceiptHandle=receipt_handle
 	)
 	return response
-
-"""
-{'Messages':[
-	{
-		'MessageId': 'e188e6ff-ebec-4709-a4e3-2784feed70d6',
-		'ReceiptHandle': 'SQS/BACKDOOR/ACCESS',
-		'MD5OfBody': 'b10a8db164e0754105b7a99be72e3fe5',
-		'Body': 'Hello World',
-		'Attributes': {
-			'SenderId': '000000000000',
-			'SentTimestamp': '1686336017000',
-			'MessageGroupId': '6d144e68-2377-40dd-8c15-321d4c7816b7',
-			'MessageDeduplicationId': '4c754e4a-e4ef-47b6-b2d7-1303c6322d86',
-			'SequenceNumber': '14485516086163800064',
-			'ApproximateReceiveCount': '0',
-			'ApproximateFirstR eceiveTimestamp': '0'
-		}
-	},
-"""
