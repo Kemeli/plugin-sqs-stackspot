@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css" />
+	<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap" rel="stylesheet">
+	<title>Documentação do Plugin "MyQueue"</title>
+	<style>
+		body {
+			background-color: rgb(14, 18, 34);
+			color: whitesmoke;
+			font-family: 'Poppins', sans-serif;
+		}
+		h1, h2, h3, p, li{
+			color: whitesmoke;
+			text-align: left;
+			margin-left: 20%;
+			margin-right: 20%;
+		}
+		.subtitle {
+			font-weight: bold;
+		}
+	.areaCode {
+		margin-left: 20%;
+		margin-right: 20%;
+		text-align: left;
+		border-radius: 10px; /* Define o raio das bordas arredondadas */
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+		background-color: rgb(19, 25, 45); /* Define o fundo transparente */
+		padding: 2px; /* Define o espaçamento interno da div */
+	}
+	.codigo {
+		/* text-align: left; */
+		background-color: rgb(19, 25, 45);
+		font-family: 'Courier New', monospace;
+		text-align: left;
+	}
+
+	.command-container {
+      position: relative;
+    }
+
+    .command-container pre {
+      padding: 10px;
+      background-color: rgb(24, 32, 57);
+      color: #fff;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    .command-container .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px;
+      background-color: rgb(19, 25, 45);
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+</style>
+
+</head>
+<body>
+	<div class="areaCode">
+		<p>create-Queue</p>
+		<p>Versão: 1.0 AWS SQS</p>
+		<div class="command-container">
+			<pre id="command" class="language-bash"><code>stk apply plugin..</code></pre>
+			<button class="copy-button" data-clipboard-target="#command">
+			  <i class="fas fa-copy"></i>
+			</button>
+		  </div>
+	</div>
+
+	<h1>Sobre</h1>
+	<p>O Plugin "create-Queue" é uma ferramenta que permite a criação e configuração de filas SQS (Simple Queue Service) com facilidade. Com diversas opções de configuração disponíveis, esse plugin oferece flexibilidade e controle sobre o comportamento das filas.</p>
+	<h1>Implementação</h1>
+
+	<p class="subtitle">QueueName Propriedades:</p>
+	<ul>
+		<li>Descrição: Nome da fila SQS.</li>
+		<li>Tipo: String.</li>
+	</ul>
+
+	<p class="subtitle">DelaySeconds</p>
+	<ul>
+		<li>Descrição: Tempo de atraso, em segundos, para colocar mensagens na fila.</li>
+		<li>Tipo: Inteiro.</li>
+	</ul>
+
+	<p class="subtitle">MessageRetentionPeriod</p>
+	<ul>
+		<li>Descrição: Período de retenção das mensagens na fila, em segundos.</li>
+		<li>Tipo: Inteiro.</li>
+	</ul>
+
+	<p class="subtitle">MaximumMessageSize</p>
+	<ul>
+		<li>Descrição: Tamanho máximo, em bytes, para uma mensagem.</li>
+		<li>Tipo: Inteiro.</li>
+	</ul>
+
+	<p class="subtitle">VisibilityTimeout</p>
+	<ul>
+		<li>Descrição: Tempo máximo, em segundos, que uma mensagem permanece invisível após ser recebida.</li>
+		<li>Tipo: Inteiro.</li>
+	</ul>
+
+	<p class="subtitle">FifoQueue</p>
+	<ul>
+		<li>Descrição: Indica se a fila é uma FIFO (First-In-First-Out).</li>
+		<li>Tipo: Booleano.</li>
+	</ul>
+
+	<p class="subtitle">ReceiveMessageWaitTimeSeconds</p>
+	<ul>
+		<li>Descrição: Tempo, em segundos, para esperar por uma mensagem disponível quando a fila está vazia.</li>
+		<li>Tipo: Inteiro.</li>
+	</ul>
+
+	<p class="subtitle">DuplicateMessageDetection</p>
+	<ul>
+		<li>Descrição: Indica se a detecção de mensagens duplicadas está ativada.</li>
+		<li>Tipo: Booleano.</li>
+	</ul>
+
+	<p class="subtitle">ContentBasedDeduplication</p>
+	<ul>
+		<li>Descrição: Indica se a deduplicação baseada em conteúdo está ativada.</li>
+		<li>Tipo: Booleano.</li>
+	</ul>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+	<script>
+		var clipboard = new ClipboardJS('.copy-button');
+
+		clipboard.on('success', function(e) {
+		  e.clearSelection();
+		  console.log('Copied to clipboard!');
+		});
+
+		clipboard.on('error', function(e) {
+		  console.error('Failed to copy to clipboard:', e.action);
+		});
+	  </script>
+	<script>
+		// Opcional: ativar o realce de sintaxe do Prism.js
+		Prism.highlightAll();
+	</script>
+</body>
+</html>

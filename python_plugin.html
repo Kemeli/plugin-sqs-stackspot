@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css" />
+	<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap" rel="stylesheet">
+	<title>queue library documantation</title>
+	<style>
+		body {
+			background-color: rgb(14, 18, 34);
+			color: whitesmoke;
+			font-family: 'Poppins', sans-serif;
+		}
+		h1, h2, h3, p, li{
+			color: whitesmoke;
+			text-align: left;
+			margin-left: 20%;
+			margin-right: 20%;
+		}
+		.subtitle {
+			font-weight: bold;
+		}
+	.areaCode {
+		margin-left: 20%;
+		margin-right: 20%;
+		text-align: left;
+		border-radius: 10px; /* Define o raio das bordas arredondadas */
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+		background-color: rgb(19, 25, 45); /* Define o fundo transparente */
+		padding: 2px; /* Define o espaçamento interno da div */
+	}
+	.codigo {
+		/* text-align: left; */
+		background-color: rgb(19, 25, 45);
+		font-family: 'Courier New', monospace;
+		text-align: left;
+	}
+</style>
+
+</head>
+<body>
+	<h3>Descrição</h3>
+	<p>Plugin para manipular mensagens em uma fila SQS</p>
+	<h3>Requirements</h3>
+	<ul>
+		<li>Python 3.8 ou superior.</li>
+		<li>Chalice 1.25.1 ou superior.</li>
+		<li>Boto3 1.18.44 ou superior.</li>
+	</ul>
+	<h3>Sobre</h3>
+	<p>O SQS Library é um plugin que fornece uma biblioteca para interagir com o serviço Amazon Simple Queue Service (SQS). O plugin é desenvolvido usando a biblioteca boto3. Ele oferece funções convenientes para enviar, receber e manipular mensagens em uma fila SQS.</p>
+	<h3>Implementação</h3>
+	<p>A implementação do SQS Library é feita da seguinte forma:</p>
+	<ul>
+		<li>Importação das bibliotecas necessárias:</li>
+	<div class="areaCode">
+		<pre class="language-javascript line-numbers">
+		<code class="language-javascript">
+			from chalice import Chalice
+			import boto3
+			import uuid
+		</code>
+		</pre>
+	</div>
+	<li>Definição das constantes, que incluem as URLs de endpoint, os detalhes da fila e a região:</li>
+	<div class="areaCode">
+		<pre class="language-javascript line-numbers">
+		<code class="language-javascript">
+			ENDPOINT_URL_SEND = 'http://host.docker.internal:4566'
+			ENDPOINT_URL_RECEIVE = "http://host.docker.internal:4566/_aws/sqs/messages"
+			QUEUE_URL = "http://queue.localhost.localstack.cloud:4566/000000000000"
+			QUEUE_NAME = 'MinhaFila.fifo'
+			REGION = 'us-east-1'
+		</code>
+		</pre>
+	</div>
+	<li>Criação do cliente SQS com o endpoint e região especificados:</li>
+	<div class="areaCode">
+		<pre class="language-javascript line-numbers">
+		<code class="language-javascript">
+			sqs_client = boto3.client('sqs', endpoint_url=ENDPOINT_URL_SEND, region_name=REGION)
+		</code>
+		</pre>
+	</div>
+	<li>Implementação das funções da biblioteca, como enviar mensagens FIFO, enviar mensagens padrão, receber mensagens e manipular informações das mensagens. Cada função possui uma descrição detalhada de seus parâmetros e retorno.</li>
+	</ul>
+	<h3>Utilização</h3>
+	<p>Para utilizar o SQS Library como um plugin em seu projeto, siga as etapas abaixo:</p>
+	<ul>
+	<li>Certifique-se de ter instalado a biblioteca Boto3 em seu ambiente Python.</li>
+	<li>Copie o código do SQS Library e cole-o em seu arquivo Python ou ambiente de desenvolvimento.</li>
+	<li>Defina as constantes ENDPOINT_URL_SEND, ENDPOINT_URL_RECEIVE, QUEUE_URL, QUEUE_NAME e REGION de acordo com sua configuração da fila SQS.</li>
+	<li>Utilize as funções fornecidas pela biblioteca para enviar, receber e manipular mensagens em sua fila SQS.</li>
+	</ul>
+	
+
+	<script>
+		// Opcional: ativar o realce de sintaxe do Prism.js
+		Prism.highlightAll();
+	</script>
+</body>
+</html>
