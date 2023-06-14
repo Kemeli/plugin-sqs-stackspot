@@ -31,6 +31,8 @@
 	.areaCode {
 		margin-left: 20%;
 		margin-right: 20%;
+		margin-top: 5px;
+		margin-bottom: 15px;
 		text-align: left;
 		border-radius: 10px; /* Define o raio das bordas arredondadas */
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
@@ -43,7 +45,43 @@
 		font-family: 'Courier New', monospace;
 		text-align: left;
 	}
+
+	/* Estilos para o plano de fundo */
+	pre.custom-prism {
+		background-color: rgb(19, 25, 45);
+		padding: 10px;
+		border-radius: 5px;
+		overflow-x: auto;
+	}
+
+	/* Estilos para o texto */
+	pre.custom-prism code {
+		color: #ffffff;
+		font-family: Consolas, monospace;
+		font-size: 14px;
+	}
+
+	/* Estilos para palavras-chave */
+	.token.keyword {
+		color: #ff9d00;
+	}
+
+	/* Estilos para strings */
+	.token.string {
+		color: #00bfa5;
+	}
+
+	pre.line-numbers {
+		padding-left: 0em !important; /* Ajuste o valor conforme necessário */
+	}
+
+	.language-javascript .token.operator {
+		color: inherit;
+		background: none;
+	}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
 </head>
 <body>
@@ -62,7 +100,7 @@
 	<ul>
 		<li>Importação das bibliotecas necessárias:</li>
 	<div class="areaCode">
-		<pre class="language-javascript line-numbers">
+		<pre class="custom-prism line-numbers">
 		<code class="language-javascript">
 			from chalice import Chalice
 			import boto3
@@ -72,7 +110,7 @@
 	</div>
 	<li>Definição das constantes, que incluem as URLs de endpoint, os detalhes da fila e a região:</li>
 	<div class="areaCode">
-		<pre class="language-javascript line-numbers">
+		<pre class="custom-prism line-numbers">
 		<code class="language-javascript">
 			ENDPOINT_URL_SEND = 'http://host.docker.internal:4566'
 			ENDPOINT_URL_RECEIVE = "http://host.docker.internal:4566/_aws/sqs/messages"
@@ -84,7 +122,7 @@
 	</div>
 	<li>Criação do cliente SQS com o endpoint e região especificados:</li>
 	<div class="areaCode">
-		<pre class="language-javascript line-numbers">
+		<pre class="custom-prism line-numbers">
 		<code class="language-javascript">
 			sqs_client = boto3.client('sqs', endpoint_url=ENDPOINT_URL_SEND, region_name=REGION)
 		</code>
